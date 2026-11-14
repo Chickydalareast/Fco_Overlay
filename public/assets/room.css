@@ -1,0 +1,69 @@
+/* v0.4C Player Camera Room: red / white / black, flat, one column. */
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:#0b0b0d;color:#f4f4f5;font-family:Inter,'Segoe UI',Arial,sans-serif;-webkit-text-size-adjust:100%}
+.room{width:min(560px,100%);margin:0 auto;padding:20px 16px 32px}
+.room-head{display:flex;align-items:center;gap:14px;padding-bottom:16px;margin-bottom:16px;border-bottom:2px solid #ea0d12}
+.room-logo{width:92px;height:auto;flex-shrink:0}
+.room-kicker{font:700 18px/1.1 'Barlow Condensed',Inter,Arial,sans-serif;letter-spacing:1.2px;color:#fff}
+.room-match{margin-top:4px;font-size:13px;color:#a1a1aa}
+
+.room-preview{position:relative;aspect-ratio:16/9;background:#18181b;overflow:hidden;border-radius:6px}
+.room-preview video{display:block;width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
+.preview-off,.preview-portrait{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:16px}
+.preview-off p,.preview-portrait p{margin:0;font-size:16px;font-weight:700}
+.preview-portrait{background:rgba(11,11,13,.92)}
+.preview-portrait span{font-size:13px;color:#a1a1aa}
+.room-preview[data-state="off"] .preview-off{display:flex}
+.room-preview[data-state="portrait"] .preview-portrait{display:flex}
+.room-preview[data-state="off"] video{visibility:hidden}
+.rotate-icon{width:26px;height:44px;border:3px solid #fff;border-radius:5px;animation:rotate-hint 1.6s ease-in-out infinite}
+@keyframes rotate-hint{0%,25%{transform:rotate(0)}60%,100%{transform:rotate(-90deg)}}
+.preview-tag{position:absolute;left:10px;top:10px;padding:4px 8px;font-size:11px;font-weight:700;letter-spacing:.8px;background:rgba(0,0,0,.6);color:#fff;border-radius:3px}
+.preview-tag[data-live="true"]{background:#ea0d12}
+.room-preview[data-state="off"] .preview-tag{display:none}
+
+.room-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.room-form label{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:600;color:#a1a1aa}
+.room-form label.wide{grid-column:1/-1}
+.room-form select{width:100%;height:44px;padding:0 12px;font:500 15px Inter,'Segoe UI',Arial,sans-serif;color:#fff;background:#18181b;border:1px solid #3f3f46;border-radius:6px}
+.room-form select:focus{outline:2px solid #ea0d12;outline-offset:1px}
+.room-form select:disabled{opacity:.55}
+
+.room-status{display:flex;align-items:flex-start;gap:10px;min-height:46px;padding:12px 14px;margin-bottom:12px;background:#18181b;border-radius:6px;font-size:14px;line-height:1.45}
+.room-status i{width:10px;height:10px;margin-top:5px;border-radius:50%;background:#71717a;flex-shrink:0}
+.room-status[data-tone="wait"] i{background:#f5f5f5;animation:pulse 1.2s ease-in-out infinite}
+.room-status[data-tone="ok"] i{background:#22c55e}
+.room-status[data-tone="bad"]{color:#fecaca}
+.room-status[data-tone="bad"] i{background:#ea0d12}
+@keyframes pulse{50%{opacity:.25}}
+
+.btn{display:block;width:100%;height:50px;border:0;border-radius:6px;font:700 15px Inter,'Segoe UI',Arial,sans-serif;letter-spacing:.3px;cursor:pointer}
+.btn+.btn{margin-top:10px}
+.btn-red{background:#ea0d12;color:#fff}
+.btn-red:hover:not(:disabled){background:#c90b10}
+.btn-ghost{background:transparent;color:#e4e4e7;border:1px solid #3f3f46}
+.btn-light{width:auto;height:42px;padding:0 20px;background:#fff;color:#0b0b0d}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+
+.room-notes{margin:20px 0 0;padding:0 0 0 18px;color:#a1a1aa;font-size:13px;line-height:1.7}
+@media (max-width:420px){.room-form{grid-template-columns:1fr}.room-form label.wide{grid-column:auto}.room-logo{width:72px}}
+@media (orientation:landscape) and (max-height:520px){
+  /* Phone held sideways: preview and controls side by side */
+  .room{width:100%;max-width:980px;display:grid;grid-template-columns:1.15fr 1fr;column-gap:18px;padding:12px 16px}
+  .room-head{grid-column:1/-1;padding-bottom:10px;margin-bottom:10px}
+  .room-preview{grid-row:2/span 5}
+  .room-form{margin-top:0}
+  .room-notes{display:none}
+}
+/* v0.4D: BTC audio */
+.room-audio{margin:0 0 12px;padding:12px 14px;background:#18181b;border-radius:6px}
+.audio-head{display:flex;align-items:center;gap:10px;font-size:14px}
+.audio-state{margin-left:auto;font-size:12px;color:#a1a1aa}
+.audio-dot{width:10px;height:10px;border-radius:50%;background:#3f3f46;flex-shrink:0;transition:background 120ms}
+.audio-dot[data-on="true"]{background:#ea0d12;box-shadow:0 0 0 4px rgba(234,13,18,.25)}
+.audio-row{display:flex;align-items:center;gap:12px;margin-top:10px}
+.audio-row input[type=range]{flex:1;accent-color:#ea0d12}
+.audio-value{width:40px;text-align:right;font-size:13px;color:#d4d4d8}
+.btn-small{width:auto;height:36px;padding:0 14px;font-size:13px}
+.btn+.btn.btn-small,.room-audio .btn-small+.btn-small{margin-top:10px}

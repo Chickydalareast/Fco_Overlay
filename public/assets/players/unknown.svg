@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1900 2000" width="1900" height="2000">
+  <!-- Placeholder portrait, drawn on the official portrait spec:
+       canvas 1900x2000, head top y=360, waist/belt line y=1644, body centred on x=980. -->
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#606a79"/>
+      <stop offset="1" stop-color="#2b313b"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#g)">
+    <ellipse cx="980" cy="505" rx="118" ry="145"/>
+    <path d="M935 630 L1025 630 L1040 720 L920 720 Z"/>
+    <path d="M700 820 Q720 735 860 712 L930 700 Q980 745 1030 700 L1100 712 Q1240 735 1260 820 L1300 1180 L1250 1200 L1240 1644 L720 1644 L710 1200 L660 1180 Z"/>
+  </g>
+  <text x="980" y="575" text-anchor="middle" font-family="Arial, sans-serif" font-size="190" font-weight="900" fill="#97a1b0" opacity=".85">?</text>
+</svg>

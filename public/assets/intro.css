@@ -1,0 +1,65 @@
+/* FC Online Graphics Studio — Team Intro (v0.4A.1).
+   Design space 2560x1440. Geometry (positions/sizes/clip shapes) is generated
+   from INTRO constants in client/intro.ts; this file holds look & layer order.
+   Hidden pose = CSS default below; the WAAPI timeline animates to the shown pose. */
+.intro-layer { z-index:20; font-family:'Inter','Segoe UI',Arial,sans-serif; }
+.intro-layer[data-state="hidden"] { visibility:hidden; }
+
+/* 1. Backlight beams (behind everything). v0.4A.1: wider/taller for 2 players,
+   plus a very light rising-wave loop so the still frame never looks frozen. */
+.intro-beam { position:absolute; overflow:hidden; z-index:1; }
+.intro-beam-fill { position:absolute; inset:0; opacity:0; transform:translateY(100%); }
+.intro-beam-a .intro-beam-fill { background:linear-gradient(to top, rgba(234,13,18,.86) 0%, rgba(234,13,18,.5) 30%, rgba(234,13,18,.16) 68%, rgba(234,13,18,0) 100%); }
+.intro-beam-b .intro-beam-fill { background:linear-gradient(to top, rgba(255,255,255,.8) 0%, rgba(255,255,255,.44) 30%, rgba(255,255,255,.13) 68%, rgba(255,255,255,0) 100%); }
+/* Wave bands: a tall strip of soft horizontal bands moved up by exactly one
+   period, so the loop is seamless. Masked to fade out at the top. */
+.intro-beam-wave { position:absolute; left:0; right:0; top:0; will-change:transform;
+  -webkit-mask-image:linear-gradient(to top, rgba(0,0,0,.9) 0%, rgba(0,0,0,.55) 45%, rgba(0,0,0,0) 92%);
+          mask-image:linear-gradient(to top, rgba(0,0,0,.9) 0%, rgba(0,0,0,.55) 45%, rgba(0,0,0,0) 92%); }
+.intro-beam-wave.wave-1 { bottom:-180px; animation:intro-wave-1 5.4s linear infinite; }
+.intro-beam-wave.wave-2 { bottom:-290px; animation:intro-wave-2 8.7s linear infinite; }
+.intro-beam-a .wave-1 { background:repeating-linear-gradient(to top, rgba(255,150,150,0) 0px, rgba(255,150,150,.18) 60px, rgba(255,150,150,0) 120px, rgba(255,150,150,0) 180px); }
+.intro-beam-a .wave-2 { background:repeating-linear-gradient(to top, rgba(120,0,4,0) 0px, rgba(120,0,4,.12) 110px, rgba(120,0,4,0) 220px, rgba(120,0,4,0) 290px); }
+.intro-beam-b .wave-1 { background:repeating-linear-gradient(to top, rgba(255,255,255,0) 0px, rgba(255,255,255,.22) 60px, rgba(255,255,255,0) 120px, rgba(255,255,255,0) 180px); }
+.intro-beam-b .wave-2 { background:repeating-linear-gradient(to top, rgba(170,170,180,0) 0px, rgba(170,170,180,.09) 110px, rgba(170,170,180,0) 220px, rgba(170,170,180,0) 290px); }
+@keyframes intro-wave-1 { from { transform:translateY(0); } to { transform:translateY(-180px); } }
+@keyframes intro-wave-2 { from { transform:translateY(0); } to { transform:translateY(-290px); } }
+/* No ticking while the intro is off air or in the small Studio monitor. */
+.intro-layer[data-state="hidden"] .intro-beam-wave { animation-play-state:paused; }
+.stage-monitor .intro-beam-wave { animation:none!important; }
+
+/* 2. Tournament logo (behind the players, masked by the plate top when it leaves) */
+.intro-logo-mask { position:absolute; left:0; top:0; width:100%; overflow:hidden; z-index:2; perspective:1800px; }
+.intro-logo { position:absolute; opacity:0; transform-origin:50% 50%; }
+.intro-logo img { display:block; width:100%; height:auto; }
+.intro-logo-ghost { position:absolute; left:0; top:0; opacity:0; }
+.intro-logo-main { position:relative; }
+
+/* 3. Players: rise from behind the bar (masked at the bar bottom) */
+.intro-players { position:absolute; left:0; top:0; width:100%; overflow:hidden; z-index:3; }
+.intro-portrait { position:absolute; object-fit:contain; transform:translateY(1110px); }
+.portrait-a2,.portrait-b2 { z-index:1; }
+.portrait-a1,.portrait-b1 { z-index:2; }
+
+/* 4. Name panels + logo squares (left = red team colour, right = white) */
+.intro-side { position:absolute; z-index:4; overflow:hidden; }
+.intro-base { position:absolute; inset:0; }
+.intro-side-a .intro-base { background:#fff; transform:translateX(100%); }
+.intro-side-b .intro-base { background:#ea0d12; transform:translateX(-100%); }
+.intro-square, .intro-name-wrap { position:absolute; top:0; height:100%; overflow:hidden; }
+.intro-square-fill, .intro-name-fill { position:absolute; inset:0; display:flex; align-items:center; }
+.intro-square-fill { justify-content:center; }
+.intro-side-a .intro-square-fill { background:#ea0d12; transform:translateX(150%); }
+.intro-side-b .intro-square-fill { background:#fff; transform:translateX(-150%); }
+.intro-team-logo { width:76%; height:76%; object-fit:contain; }
+.intro-side-a .intro-name-fill { background:#ea0d12; color:#fff; padding-left:24px; transform:translateX(100%); }
+.intro-side-b .intro-name-fill { background:#fff; color:#ea0d12; padding-right:30px; justify-content:flex-end; transform:translateX(-100%); }
+.intro-team-name { font-family:'Barlow Condensed',Inter,'Segoe UI',Arial,sans-serif; font-weight:700; letter-spacing:.6px; text-transform:uppercase; white-space:nowrap; line-height:1.08; }
+
+/* 5. Centre plate (on top of the panels) */
+.intro-plate { position:absolute; z-index:5; overflow:hidden; }
+.intro-plate-white { position:absolute; inset:0; background:#fff; opacity:0; transform:scaleX(.35); }
+.intro-plate-grad { position:absolute; inset:0; background:linear-gradient(100deg,#060000 12%,#3d0407 42%,#b30a10 72%,#e30c12 92%); clip-path:inset(0px 0px 100% 0px); }
+.intro-plate-text { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; color:#fff; transform:translateY(-120px); padding-bottom:4px; }
+.intro-match { font-family:'Barlow Condensed',Inter,'Segoe UI',Arial,sans-serif; font-weight:700; font-size:54px; line-height:1; letter-spacing:1px; text-transform:uppercase; }
+.intro-game { font-family:'Barlow Condensed',Inter,'Segoe UI',Arial,sans-serif; font-weight:600; font-size:36px; line-height:1; letter-spacing:2px; text-transform:uppercase; }

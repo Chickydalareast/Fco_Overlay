@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="only light" />
+  <title>FC Graphics — OBS Output</title>
+  <link rel="stylesheet" href="/assets/fonts/fonts.css" />
+  <link rel="stylesheet" href="/assets/stage.css" />
+  <link rel="stylesheet" href="/assets/intro.css" />
+  <link rel="stylesheet" href="/assets/scoreboard.css" />
+  <link rel="stylesheet" href="/assets/history.css" />
+  <style>
+    html, body { width:100%; height:100%; margin:0; background:transparent!important; overflow:hidden!important; }
+    #output-root { position:fixed; inset:0; width:100vw; height:100vh; background:transparent; overflow:hidden; }
+    body.output-body .stage-frame { position:absolute; inset:0; border:0; aspect-ratio:auto; width:100%; height:100%; border-radius:0; }
+  </style>
+</head>
+<body class="output-body">
+  <div id="output-root"></div>
+  <script defer src="/vendor/livekit-client-2.23.0.umd.js" integrity="sha384-ITyFwvSJTfUgINapo01UKT8nE60q8D+vSiVIudnFWvk08zYMMBdk4MRQ8PFxY9Jr"></script>
+  <script type="module" src="/build/output.js"></script>
+</body>
+</html>

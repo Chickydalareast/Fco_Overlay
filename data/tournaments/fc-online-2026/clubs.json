@@ -1,0 +1,210 @@
+[
+  {
+    "id": "ac-milan",
+    "name": "AC Milan",
+    "shortName": "MIL",
+    "colors": {
+      "primary": "#CF2E35",
+      "secondary": "#111111",
+      "foreground": "#FFFFFF"
+    },
+    "logo": "/assets/clubs/ac-milan.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  },
+  {
+    "id": "manchester-united",
+    "name": "Manchester United",
+    "shortName": "MUN",
+    "colors": {
+      "primary": "#DA291C",
+      "secondary": "#FBE122",
+      "foreground": "#FFFFFF"
+    },
+    "logo": "/assets/clubs/manchester-united.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  },
+  {
+    "id": "tottenham-hotspur",
+    "name": "Tottenham Hotspur",
+    "shortName": "TOT",
+    "colors": {
+      "primary": "#132257",
+      "secondary": "#FFFFFF",
+      "foreground": "#FFFFFF"
+    },
+    "logo": "/assets/clubs/tottenham-hotspur.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  },
+  {
+    "id": "napoli",
+    "name": "SSC Napoli",
+    "shortName": "NAP",
+    "colors": {
+      "primary": "#12A0D7",
+      "secondary": "#003C82",
+      "foreground": "#FFFFFF"
+    },
+    "logo": "/assets/clubs/napoli.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  },
+  {
+    "id": "bayern-munich",
+    "name": "FC Bayern München",
+    "shortName": "FCB",
+    "colors": {
+      "primary": "#DC052D",
+      "secondary": "#0066B2",
+      "foreground": "#FFFFFF"
+    },
+    "logo": "/assets/clubs/bayern-munich.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  },
+  {
+    "id": "chelsea",
+    "name": "Chelsea FC",
+    "shortName": "CHE",
+    "colors": {
+      "primary": "#034694",
+      "secondary": "#FFFFFF",
+      "foreground": "#FFFFFF"
+    },
+    "logo": "/assets/clubs/chelsea.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  },
+  {
+    "id": "manchester-city",
+    "name": "Manchester City",
+    "shortName": "MCI",
+    "colors": {
+      "primary": "#6CABDD",
+      "secondary": "#1C2C5B",
+      "foreground": "#101A2B"
+    },
+    "logo": "/assets/clubs/manchester-city.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  },
+  {
+    "id": "borussia-dortmund",
+    "name": "Borussia Dortmund",
+    "shortName": "BVB",
+    "colors": {
+      "primary": "#FDE100",
+      "secondary": "#000000",
+      "foreground": "#101010"
+    },
+    "logo": "/assets/clubs/borussia-dortmund.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  },
+  {
+    "id": "juventus",
+    "name": "Juventus FC",
+    "shortName": "JUV",
+    "colors": {
+      "primary": "#FFFFFF",
+      "secondary": "#000000",
+      "foreground": "#101010"
+    },
+    "logo": "/assets/clubs/juventus.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  },
+  {
+    "id": "barcelona",
+    "name": "FC Barcelona",
+    "shortName": "BAR",
+    "colors": {
+      "primary": "#004D98",
+      "secondary": "#A50044",
+      "foreground": "#FFFFFF"
+    },
+    "logo": "/assets/clubs/barcelona.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  },
+  {
+    "id": "atletico-madrid",
+    "name": "Atlético de Madrid",
+    "shortName": "ATM",
+    "colors": {
+      "primary": "#CB3524",
+      "secondary": "#2B4FA3",
+      "foreground": "#FFFFFF"
+    },
+    "logo": "/assets/clubs/atletico-madrid.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  },
+  {
+    "id": "inter-milan",
+    "name": "Inter Milan",
+    "shortName": "INT",
+    "colors": {
+      "primary": "#0068A8",
+      "secondary": "#101010",
+      "foreground": "#FFFFFF"
+    },
+    "logo": "/assets/clubs/inter-milan.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  },
+  {
+    "id": "psg",
+    "name": "Paris Saint-Germain",
+    "shortName": "PSG",
+    "colors": {
+      "primary": "#004170",
+      "secondary": "#DA291C",
+      "foreground": "#FFFFFF"
+    },
+    "logo": "/assets/clubs/psg.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  },
+  {
+    "id": "real-madrid",
+    "name": "Real Madrid CF",
+    "shortName": "RMA",
+    "colors": {
+      "primary": "#FFFFFF",
+      "secondary": "#FEBE10",
+      "foreground": "#171717"
+    },
+    "logo": "/assets/clubs/real-madrid.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  },
+  {
+    "id": "liverpool",
+    "name": "Liverpool FC",
+    "shortName": "LIV",
+    "colors": {
+      "primary": "#C8102E",
+      "secondary": "#00B2A9",
+      "foreground": "#FFFFFF"
+    },
+    "logo": "/assets/clubs/liverpool.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  },
+  {
+    "id": "arsenal",
+    "name": "Arsenal FC",
+    "shortName": "ARS",
+    "colors": {
+      "primary": "#EF0107",
+      "secondary": "#063672",
+      "foreground": "#FFFFFF"
+    },
+    "logo": "/assets/clubs/arsenal.png",
+    "logoStatus": "reference-crop",
+    "logoSource": "user-provided group stage image; provisional low-resolution extraction"
+  }
+]

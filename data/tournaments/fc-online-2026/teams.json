@@ -1,0 +1,130 @@
+[
+  {
+    "id": "C1",
+    "tournamentId": "fc-online-2026",
+    "group": "A",
+    "clubId": "ac-milan",
+    "displayName": "C1",
+    "active": true
+  },
+  {
+    "id": "C2",
+    "tournamentId": "fc-online-2026",
+    "group": "C",
+    "clubId": "manchester-united",
+    "displayName": "C2",
+    "active": true
+  },
+  {
+    "id": "C3",
+    "tournamentId": "fc-online-2026",
+    "group": "C",
+    "clubId": "tottenham-hotspur",
+    "displayName": "C3",
+    "active": true
+  },
+  {
+    "id": "C4",
+    "tournamentId": "fc-online-2026",
+    "group": "B",
+    "clubId": "napoli",
+    "displayName": "C4",
+    "active": true
+  },
+  {
+    "id": "C5",
+    "tournamentId": "fc-online-2026",
+    "group": "C",
+    "clubId": "bayern-munich",
+    "displayName": "C5",
+    "active": true
+  },
+  {
+    "id": "C6",
+    "tournamentId": "fc-online-2026",
+    "group": "D",
+    "clubId": "chelsea",
+    "displayName": "C6",
+    "active": true
+  },
+  {
+    "id": "C7",
+    "tournamentId": "fc-online-2026",
+    "group": "D",
+    "clubId": "manchester-city",
+    "displayName": "C7",
+    "active": true
+  },
+  {
+    "id": "C8",
+    "tournamentId": "fc-online-2026",
+    "group": "B",
+    "clubId": "borussia-dortmund",
+    "displayName": "C8",
+    "active": true
+  },
+  {
+    "id": "C9",
+    "tournamentId": "fc-online-2026",
+    "group": "D",
+    "clubId": "juventus",
+    "displayName": "C9",
+    "active": true
+  },
+  {
+    "id": "C10",
+    "tournamentId": "fc-online-2026",
+    "group": "A",
+    "clubId": "barcelona",
+    "displayName": "C10",
+    "active": true
+  },
+  {
+    "id": "C11",
+    "tournamentId": "fc-online-2026",
+    "group": "C",
+    "clubId": "atletico-madrid",
+    "displayName": "C11",
+    "active": true
+  },
+  {
+    "id": "C12",
+    "tournamentId": "fc-online-2026",
+    "group": "A",
+    "clubId": "inter-milan",
+    "displayName": "C12",
+    "active": true
+  },
+  {
+    "id": "C13",
+    "tournamentId": "fc-online-2026",
+    "group": "B",
+    "clubId": "psg",
+    "displayName": "C13",
+    "active": true
+  },
+  {
+    "id": "C14",
+    "tournamentId": "fc-online-2026",
+    "group": "D",
+    "clubId": "real-madrid",
+    "displayName": "C14",
+    "active": true
+  },
+  {
+    "id": "C15",
+    "tournamentId": "fc-online-2026",
+    "group": "B",
+    "clubId": "liverpool",
+    "displayName": "C15",
+    "active": true
+  },
+  {
+    "id": "C16",
+    "tournamentId": "fc-online-2026",
+    "group": "A",
+    "clubId": "arsenal",
+    "displayName": "C16",
+    "active": true
+  }
+]

@@ -1,0 +1,23 @@
+{
+  "name": "fc-online-broadcast-overlay",
+  "version": "0.5.5",
+  "private": true,
+  "type": "module",
+  "description": "FC Online overlay + camera room + SQLite tournament registry + BO session + group camera controls + realtime/performance improvements v0.3E + reliability v0.3F + production readiness v0.3G + team intro graphics v0.4A",
+  "scripts": {
+    "start": "node server/index.mjs",
+    "dev": "node --watch server/index.mjs",
+    "build": "tsc -p tsconfig.client.json",
+    "typecheck": "tsc -p tsconfig.client.json --noEmit",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "ws": "^8.23.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=22.16.0"
+  }
+}

@@ -1,0 +1,8 @@
+# /etc/caddy/Caddyfile  (Caddy tu lay HTTPS Let's Encrypt cho domain)
+# Doi overlay.example.com thanh domain that, tro A record ve IP VPS truoc.
+overlay.example.com {
+	encode zstd gzip
+	# WebSocket (/ws) duoc Caddy chuyen tiep tu dong.
+	reverse_proxy 127.0.0.1:4173
+	header Strict-Transport-Security "max-age=31536000"
+}

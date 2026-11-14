@@ -1,0 +1,35 @@
+FC ONLINE GRAPHICS STUDIO — BẢN THỬ PHASE 1
+
+Đây là project mới hoàn toàn, không phải bản nâng cấp từ AOV.
+
+CÀI ĐẶT / CHẠY
+1. Cài Node.js 22 (nếu máy chưa có): https://nodejs.org/
+2. Giải nén file ZIP.
+3. Mở PowerShell/Terminal trong thư mục vừa giải nén.
+4. Chạy: npm start
+   HOẶC Windows: nhấp đúp start-windows.bat
+5. Mở: http://127.0.0.1:4173/studio
+6. Nhập mật khẩu hiện trong cửa sổ Terminal vừa chạy.
+7. Trong Studio, nhấn "Copy OBS URL" để sao chép URL output.
+8. Mở URL output ở tab trình duyệt thứ hai để kiểm tra hoặc thêm vào OBS Browser Source trên CÙNG MÁY.
+
+CHÚ Ý
+- Màn hình PREVIEW là nơi thử animation / chỉnh dữ liệu. Nó không lên LIVE cho tới khi nhấn TAKE.
+- LIVE QUICK CUES cho phép bật/tắt trực tiếp ngay lập tức.
+- Điểm Quick Score là số game thắng trong series; không phải số bàn thắng của trận FC.
+- Cả Scoreboard và Player Intro có thể hiện đồng thời. Khi tắt, overlay có animation đi ra.
+- Bản này dùng player SVG giả lập, chưa phải đồ họa FVPL final.
+- Chưa host online: địa chỉ 127.0.0.1 chỉ dùng được trên chính máy chạy server.
+- Browser Source OBS: Width 1920, Height 1080, FPS 30 hoặc 60.
+
+THỬ 4 TRẠNG THÁI
+[ ] Scoreboard ON, Intro OFF
+[ ] Scoreboard OFF, Intro ON
+[ ] Cả hai ON
+[ ] Cả hai OFF (trong suốt)
+[ ] Preview thay đổi, Program không thay đổi
+[ ] TAKE mới cập nhật Program
+[ ] Tắt Intro đang chạy giữa chừng, animation đảo chiều mượt
+[ ] Refresh output vẫn khôi phục trạng thái
+
+Xem README.md để biết toàn bộ kiến trúc và giới hạn bản prototype.

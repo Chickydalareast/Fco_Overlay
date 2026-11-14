@@ -1,0 +1,10 @@
+FC Online v0.3D - PATCH 04/05 - UNIFIED STUDIO
+
+1) Stop `npm start` bằng Ctrl+C.
+2) Tải FC_Online_Unified_Studio_Patch_v0.3D.zip vào Downloads.
+3) Chạy PowerShell lệnh được cung cấp trong câu trả lời của ChatGPT từ root project.
+4) Script kiểm tra hash + backup source và SQLite state + test, KHÔNG ghi đè .env/.runtime.
+5) npm start => http://127.0.0.1:4173/studio
+6) Xem docs/UNIFIED_STUDIO_V03D_VI.md và kiểm tra Player Room, Preview, Program, Output.
+
+BO score giữ điều khiển thủ công. Fullscreen BO History hiện là dữ liệu + placeholder, chưa phải graphics final.

@@ -1,0 +1,22 @@
+FC ONLINE GRAPHICS STUDIO — PATCH 03/05 (v0.3C)
+================================================
+
+Tác dụng:
+- Bỏ Match/Fixture dropdown trong Studio; thay bằng BO session hiện tại.
+- Chọn hai Registry team → TAKE tự tạo BO ID nội bộ.
+- Lưu History vào SQLite theo BO mà không ảnh hưởng điểm BO thủ công.
+- Player Room giới hạn hai đội và bốn tuyển thủ; join phải được Admin duyệt.
+- Media room tách theo BO; cam offline fallback cùng đội; tự gán slot Preview.
+- Giữ Scoreboard, Intro, 1 OBS URL, 4 webcam, Preview/Program.
+
+ÁP DỤNG:
+1) TẮT npm start trong VS Code (Ctrl+C).
+2) Đặt FC_Online_Camera_Identity_Patch_v0.3C.zip vào C:\Users\phant\Downloads.
+3) Chạy đoạn PowerShell trong ChatGPT hoặc chạy APPLY_PATCH.ps1 với ProjectPath và PatchRoot.
+4) Chạy npm start.
+5) Chọn hai team trong Studio, PREPARE NEW BO (Preview), TAKE. Sau đó mới Copy Player Room.
+
+BACKUP: script lưu các file source bị thay và snapshot .runtime/fc-online.sqlite vào .backups\camera_v03c_*.
+KHÔNG CHÉP ĐÈ: .env / .runtime / node_modules / secrets.json.
+
+Beta: vẫn cần kiểm thử 4 webcam thực tế trên LiveKit + OBS, chưa deploy public.

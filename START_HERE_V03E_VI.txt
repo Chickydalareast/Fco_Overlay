@@ -1,0 +1,17 @@
+FC ONLINE GRAPHICS STUDIO — PATCH 05/05 v0.3E
+
+Yêu cầu: máy bạn đã áp dụng v0.3D, package.json 0.3.3, Node 22.16+.
+
+1. Dừng npm start (Ctrl+C).
+2. Tải FC_Online_Performance_Patch_v0.3E.zip về Downloads.
+3. Mở PowerShell ở thư mục project, gọi APPLY_PATCH.ps1 trong ZIP như hướng dẫn ChatGPT.
+4. Script backup source + runtime, kiểm tra SHA-256, chạy npm test và typecheck nếu có TypeScript.
+5. npm start, mở /studio.
+
+Thay đổi quan trọng: ALL PLAYER CAMERAS (PREV + LIVE), nút mở rộng điều khiển A1-B2, 4 slot có placeholder,
+selective subscription LiveKit, WebSocket heartbeat/limit, ETag/304, FC_PUBLIC_ORIGIN, health endpoint.
+
+CHI TIẾT: docs/PERFORMANCE_HARDENING_V03E_VI.md
+
+BẢO MẬT: Không gửi .env, secrets hoặc URL OBS có token; nên rotate token trước public VPS.
+LƯU Ý: Vẫn cần test camera/OBS thật, chưa có bảo đảm zero lag hoặc production security audit.

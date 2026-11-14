@@ -1,0 +1,61 @@
+{
+  "revision": 0,
+  "updatedAt": "1970-01-01T00:00:00.000Z",
+  "match": {
+    "competition": "FC ONLINE CHAMPIONSHIP",
+    "stage": "FINAL STAGE",
+    "matchNumber": 1,
+    "gameNumber": 2,
+    "bestOf": 5,
+    "teamA": {
+      "name": "Fury Football",
+      "shortName": "FFB",
+      "player": "FFBxJaden",
+      "seriesWins": 1,
+      "gameGoals": 0,
+      "color": "#e12a35",
+      "portrait": ""
+    },
+    "teamB": {
+      "name": "Nova Knights",
+      "shortName": "NK",
+      "player": "NKxLHAT",
+      "seriesWins": 0,
+      "gameGoals": 0,
+      "color": "#d6dbe4",
+      "portrait": ""
+    }
+  },
+  "layers": {
+    "scoreboard": {
+      "visible": true
+    },
+    "intro": {
+      "visible": false
+    },
+    "history": {
+      "visible": false
+    }
+  },
+  "cameras": {
+    "layout": "bottom4",
+    "slots": {
+      "A1": {
+        "playerId": null,
+        "visible": false
+      },
+      "A2": {
+        "playerId": null,
+        "visible": false
+      },
+      "B1": {
+        "playerId": null,
+        "visible": false
+      },
+      "B2": {
+        "playerId": null,
+        "visible": false
+      }
+    }
+  }
+}

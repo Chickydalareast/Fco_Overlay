@@ -1,0 +1,82 @@
+[
+  {
+    "id": "GROUP-A-1",
+    "tournamentId": "fc-online-2026",
+    "group": "A",
+    "leftTeamId": "C10",
+    "rightTeamId": "C16",
+    "bestOf": 3,
+    "status": "planned",
+    "source": "user-provided group-stage image"
+  },
+  {
+    "id": "GROUP-A-2",
+    "tournamentId": "fc-online-2026",
+    "group": "A",
+    "leftTeamId": "C12",
+    "rightTeamId": "C1",
+    "bestOf": 3,
+    "status": "planned",
+    "source": "user-provided group-stage image"
+  },
+  {
+    "id": "GROUP-B-1",
+    "tournamentId": "fc-online-2026",
+    "group": "B",
+    "leftTeamId": "C13",
+    "rightTeamId": "C15",
+    "bestOf": 3,
+    "status": "planned",
+    "source": "user-provided group-stage image"
+  },
+  {
+    "id": "GROUP-B-2",
+    "tournamentId": "fc-online-2026",
+    "group": "B",
+    "leftTeamId": "C8",
+    "rightTeamId": "C4",
+    "bestOf": 3,
+    "status": "planned",
+    "source": "user-provided group-stage image"
+  },
+  {
+    "id": "GROUP-C-1",
+    "tournamentId": "fc-online-2026",
+    "group": "C",
+    "leftTeamId": "C11",
+    "rightTeamId": "C3",
+    "bestOf": 3,
+    "status": "planned",
+    "source": "user-provided group-stage image"
+  },
+  {
+    "id": "GROUP-C-2",
+    "tournamentId": "fc-online-2026",
+    "group": "C",
+    "leftTeamId": "C5",
+    "rightTeamId": "C2",
+    "bestOf": 3,
+    "status": "planned",
+    "source": "user-provided group-stage image"
+  },
+  {
+    "id": "GROUP-D-1",
+    "tournamentId": "fc-online-2026",
+    "group": "D",
+    "leftTeamId": "C9",
+    "rightTeamId": "C14",
+    "bestOf": 3,
+    "status": "planned",
+    "source": "user-provided group-stage image"
+  },
+  {
+    "id": "GROUP-D-2",
+    "tournamentId": "fc-online-2026",
+    "group": "D",
+    "leftTeamId": "C7",
+    "rightTeamId": "C6",
+    "bestOf": 3,
+    "status": "planned",
+    "source": "user-provided group-stage image"
+  }
+]

@@ -1,0 +1,129 @@
+/* BO History (v0.4F). Geometry is generated in client/history.ts; this file is
+   the look, the hidden poses of the IN animation and the looping background.
+   Left team red, right team white, black background. */
+.bh-layer { z-index:30; overflow:hidden; }
+.bh-layer[data-state="hidden"] { visibility:hidden; }
+.bh-layer > * { position:absolute; }
+
+/* ---------- background ---------- */
+.bh-bg { inset:0; opacity:0; background:#050506; overflow:hidden; }
+.bh-bg > * { position:absolute; }
+.bh-base { inset:0; background:radial-gradient(ellipse at 50% 120%,rgba(120,4,10,.55) 0%,rgba(30,1,3,.35) 45%,rgba(0,0,0,0) 75%),radial-gradient(ellipse at 50% -20%,rgba(255,255,255,.06) 0%,rgba(0,0,0,0) 55%); }
+/* Red corner glows drifting / breathing so the background keeps moving */
+.bh-glow { width:1300px; height:1000px; border-radius:50%; will-change:transform,opacity; animation:bh-glow 11s ease-in-out infinite alternate;
+  background:radial-gradient(closest-side,rgba(234,13,18,.42) 0%,rgba(150,5,12,.22) 45%,rgba(0,0,0,0) 100%); }
+.bh-glow-tl { left:-520px; top:-480px; }
+.bh-glow-tr { right:-600px; top:-420px; animation-delay:-3s; animation-duration:13s; opacity:.75; }
+.bh-glow-bl { left:-620px; bottom:-460px; animation-delay:-6s; animation-duration:12s; opacity:.8; }
+.bh-glow-br { right:-520px; bottom:-500px; animation-delay:-8s; }
+@keyframes bh-glow { 0% { transform:translate(0,0) scale(1); opacity:.65; } 50% { opacity:1; } 100% { transform:translate(140px,90px) scale(1.18); opacity:.8; } }
+.bh-glow-tr, .bh-glow-br { animation-name:bh-glow-r; }
+@keyframes bh-glow-r { 0% { transform:translate(0,0) scale(1); opacity:.6; } 50% { opacity:1; } 100% { transform:translate(-140px,80px) scale(1.15); opacity:.85; } }
+.bh-speed { left:-160px; top:0; width:2880px; height:1440px; opacity:.6; will-change:transform;
+  background:repeating-linear-gradient(-68deg,rgba(255,255,255,.035) 0 3px,rgba(255,255,255,0) 3px 74px);
+  animation:bh-speed 5s linear infinite; }
+@keyframes bh-speed { from { transform:translateX(0); } to { transform:translateX(160px); } }
+.bh-art { inset:0; width:2560px; height:1440px; overflow:visible; }
+@keyframes bh-drift { from { transform:translate(0,0); } to { transform:translate(16px,-12px); } }
+
+.bh-spark { transform-box:fill-box; transform-origin:50% 50%; opacity:.85; animation:bh-twinkle 3.4s ease-in-out infinite; }
+@keyframes bh-twinkle { 0%,100% { opacity:0; transform:scale(.2) rotate(0deg); } 45% { opacity:1; transform:scale(1) rotate(45deg); } 70% { opacity:.6; transform:scale(.75) rotate(60deg); } }
+.bh-embers { inset:0; }
+.bh-embers i { position:absolute; bottom:-20px; width:6px; height:6px; border-radius:50%; opacity:0; will-change:transform; animation:bh-ember 8s linear infinite; }
+@keyframes bh-ember { 0% { opacity:0; transform:translate(0,0); } 10% { opacity:.9; } 80% { opacity:.5; } 100% { opacity:0; transform:translate(40px,-560px); } }
+/* Nothing ticks while the board is off air; Studio monitors show a still frame. */
+.bh-layer[data-state="hidden"] .bh-bg *, .bh-layer[data-state="hidden"] .bh-bg { animation-play-state:paused !important; }
+.stage-monitor .bh-bg * { animation:none !important; }
+
+/* ---------- logo ---------- */
+.bh-logo { height:auto; opacity:0; transform:translateY(-60px); filter:drop-shadow(0 6px 18px rgba(0,0,0,.6)); }
+
+/* ---------- team panels ---------- */
+.bh-panel { overflow:hidden; background:#0b0b0d; box-shadow:0 0 0 2px rgba(255,255,255,.12), 0 20px 60px rgba(0,0,0,.6); }
+.bh-panel-a { transform:translateX(-120%); }
+.bh-panel-b { transform:translateX(120%); }
+.bh-strip { position:absolute; top:0; overflow:hidden; }
+.bh-panel-a .bh-strip { background:linear-gradient(180deg,#140103 0%,#3a0205 55%,#ea0d12 100%); }
+.bh-panel-b .bh-strip { background:linear-gradient(180deg,#121214 0%,#2c2c31 55%,#f2f2f2 100%); }
+.bh-strip-2::before { content:""; position:absolute; left:0; top:0; bottom:22%; width:2px; z-index:1; background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0)); }
+.bh-portrait { position:absolute; display:block; bottom:0; left:50%; width:auto; max-width:none; transform:translateX(-50%); }
+/* the horizontal offset is set from the head position once the image loads */
+.bh-strip::after { content:""; position:absolute; inset:0; pointer-events:none; }
+.bh-panel-a .bh-strip::after { background:linear-gradient(180deg,rgba(8,0,1,.5) 0%,rgba(8,0,1,0) 22%,rgba(234,13,18,0) 52%,rgba(234,13,18,.55) 72%,rgba(234,13,18,.92) 88%,#ea0d12 100%); }
+.bh-panel-b .bh-strip::after { background:linear-gradient(180deg,rgba(8,8,9,.5) 0%,rgba(8,8,9,0) 22%,rgba(242,242,242,0) 52%,rgba(242,242,242,.55) 72%,rgba(242,242,242,.92) 88%,#f2f2f2 100%); }
+/* v0.4G: mascots fading in and out behind everything (driven by client/history.ts) */
+.bh-mascots { position:absolute; inset:0; overflow:hidden; }
+.bh-mascot { position:absolute; display:block; opacity:0; object-fit:contain; will-change:transform,opacity; }
+/* v0.4G: light rising waves inside the fade at the bottom of each portrait strip */
+.bh-wave { position:absolute; left:0; right:0; top:40%; bottom:0; z-index:1; overflow:hidden; pointer-events:none;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 55%); mask-image:linear-gradient(180deg,transparent 0%,#000 55%); }
+.bh-wave::before, .bh-wave::after { content:""; position:absolute; left:0; right:0; top:0; will-change:transform; }
+.bh-wave::before { bottom:-180px; animation:bh-wave-1 5.4s linear infinite; }
+.bh-wave::after { bottom:-290px; animation:bh-wave-2 8.7s linear infinite; }
+.bh-panel-a .bh-wave::before { background:repeating-linear-gradient(to top, rgba(255,160,160,0) 0px, rgba(255,160,160,.22) 60px, rgba(255,160,160,0) 120px, rgba(255,160,160,0) 180px); }
+.bh-panel-a .bh-wave::after { background:repeating-linear-gradient(to top, rgba(110,0,4,0) 0px, rgba(110,0,4,.16) 110px, rgba(110,0,4,0) 220px, rgba(110,0,4,0) 290px); }
+.bh-panel-b .bh-wave::before { background:repeating-linear-gradient(to top, rgba(255,255,255,0) 0px, rgba(255,255,255,.3) 60px, rgba(255,255,255,0) 120px, rgba(255,255,255,0) 180px); }
+.bh-panel-b .bh-wave::after { background:repeating-linear-gradient(to top, rgba(120,120,130,0) 0px, rgba(120,120,130,.12) 110px, rgba(120,120,130,0) 220px, rgba(120,120,130,0) 290px); }
+@keyframes bh-wave-1 { from { transform:translateY(0); } to { transform:translateY(-180px); } }
+@keyframes bh-wave-2 { from { transform:translateY(0); } to { transform:translateY(-290px); } }
+.bh-layer[data-state="hidden"] .bh-wave::before, .bh-layer[data-state="hidden"] .bh-wave::after { animation-play-state:paused; }
+.stage-monitor .bh-wave::before, .stage-monitor .bh-wave::after { animation:none; }
+.bh-names { position:absolute; left:0; right:0; bottom:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; }
+.bh-panel-a .bh-names { background:#ea0d12; color:#fff; }
+.bh-panel-b .bh-names { background:#f2f2f2; color:#0b0b0d; }
+.bh-name { font-family:'Barlow Condensed',Inter,'Segoe UI',Arial,sans-serif; font-weight:700; font-size:44px; line-height:1.08; letter-spacing:.8px; text-transform:uppercase; white-space:nowrap; transform-origin:50% 50%; }
+
+/* ---------- rows ---------- */
+.bh-rows { inset:0; }
+.bh-row { position:absolute; left:0; right:0; }
+.bh-row[hidden] { display:none; }
+.bh-box { position:absolute; top:0; bottom:0; display:flex; align-items:center; justify-content:center; padding:0 34px; opacity:0;
+  clip-path:polygon(26px 0,100% 0,100% 100%,0 100%,0 26px); -webkit-clip-path:polygon(26px 0,100% 0,100% 100%,0 100%,0 26px); }
+.bh-box-a { transform:translateX(-60px); background:linear-gradient(180deg,#5e050b 0%,#2a0104 70%,#1a0002 100%); box-shadow:inset 0 0 0 3px #b30a10; }
+.bh-box-b { transform:translateX(60px); background:linear-gradient(180deg,#3a3a40 0%,#18181b 70%,#0e0e10 100%); box-shadow:inset 0 0 0 3px #d4d4d8; }
+.bh-box > i { position:absolute; display:block; pointer-events:none; }
+/* top-left: corner triangle (secondary colour) + diagonal stripe (team colour) */
+.bh-acc-tl { left:0; top:0; width:64px; height:64px; }
+.bh-box-a .bh-acc-tl { background:linear-gradient(135deg,#ffffff 0 24%,transparent 24% 34%,#ff2a30 34% 48%,transparent 48%); }
+.bh-box-b .bh-acc-tl { background:linear-gradient(135deg,#ea0d12 0 24%,transparent 24% 34%,#ffffff 34% 48%,transparent 48%); }
+/* bottom-right: diagonal stripe + corner wedge */
+.bh-acc-br { right:0; bottom:0; width:56px; height:56px; }
+.bh-box-a .bh-acc-br { background:linear-gradient(135deg,transparent 0 58%,#ff2a30 58% 70%,transparent 70% 78%,#ffffff 78%); }
+.bh-box-b .bh-acc-br { background:linear-gradient(135deg,transparent 0 58%,#ffffff 58% 70%,transparent 70% 78%,#ea0d12 78%); }
+.bh-acc-edge { right:0; bottom:40px; width:5px; height:38%; }
+.bh-box-a .bh-acc-edge { background:#ff2a30; } .bh-box-b .bh-acc-edge { background:#ffffff; }
+.bh-acc-tab { left:52px; bottom:0; width:96px; height:5px; border-radius:3px 3px 0 0; background:rgba(255,255,255,.8); }
+.bh-team { position:relative; display:inline-block; color:#fff; font-family:'Barlow Condensed',Inter,'Segoe UI',Arial,sans-serif; font-weight:700; font-size:46px; line-height:1.08; letter-spacing:.8px; text-transform:uppercase; white-space:nowrap; transform-origin:50% 50%; text-shadow:0 2px 6px rgba(0,0,0,.45); }
+.bh-mid { position:absolute; top:0; bottom:0; display:flex; flex-direction:column; align-items:center; justify-content:center; opacity:0; transform:scale(.6); }
+.bh-main { display:inline-block; transform-origin:50% 50%; font-family:Anton,'Barlow Condensed',Impact,sans-serif; font-weight:400; font-size:calc(var(--row-h,133px) * .82); line-height:.95; color:#fff; letter-spacing:1px; white-space:nowrap;
+  text-shadow:0 4px 0 #000, 0 0 24px rgba(234,13,18,.35); }
+.bh-row[data-kind="next"] .bh-main { color:#ff2a30; text-shadow:0 4px 0 #000, 0 0 26px rgba(255,42,48,.55); }
+.bh-row[data-kind="upcoming"] .bh-main { color:#d4d4d8; }
+.bh-sub { margin-top:2px; font-family:'Barlow Condensed',Inter,'Segoe UI',Arial,sans-serif; font-weight:700; font-size:calc(var(--row-h,133px) * .28); line-height:1; letter-spacing:2px; text-transform:uppercase; color:#a1a1aa; white-space:nowrap; }
+.bh-row[data-kind="next"] .bh-sub { color:#ffffff; }
+
+/* ---------- title ---------- */
+.bh-title-wrap { left:0; right:0; display:flex; justify-content:center; opacity:0; transform:translateY(30px); filter:drop-shadow(0 7px 0 #000) drop-shadow(0 0 30px rgba(234,13,18,.35)); }
+.bh-title { clip-path:inset(0% 50% 0% 50%); -webkit-clip-path:inset(0% 50% 0% 50%); padding:0 20px; }
+.bh-title-text { display:inline-block; font-family:Anton,'Barlow Condensed',Impact,sans-serif; font-weight:400; line-height:1.2; letter-spacing:2px; white-space:nowrap; text-transform:uppercase; transform-origin:50% 50%;
+  color:#ff2a30; background:linear-gradient(180deg,#8e050b 8%,#e00c12 55%,#ff3b40 92%); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+
+/* ---------- hashtag band (v0.4F r2) ---------- */
+.bh-ticker { left:0; right:0; overflow:hidden; background:linear-gradient(180deg,#0d0d0f 0%,#050506 100%); box-shadow:0 -2px 0 rgba(234,13,18,.55), 0 -18px 40px rgba(0,0,0,.6); transform:translateY(100%); }
+.bh-ticker-track { position:absolute; left:0; top:0; bottom:0; display:flex; align-items:center; white-space:nowrap; will-change:transform; animation:bh-ticker 53s linear infinite; }
+.bh-ticker-track span { display:inline-block; padding:0 46px; font-family:Anton,'Barlow Condensed',Impact,sans-serif; font-size:40px; line-height:1; letter-spacing:1px; transform:skewX(-10deg); }
+.bh-tick-red { color:#ea0d12; }
+.bh-tick-grey { color:#4b4b52; }
+@keyframes bh-ticker { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+.bh-layer[data-state="hidden"] .bh-ticker-track { animation-play-state:paused; }
+.stage-monitor .bh-ticker-track { animation:none; }
+/* Cam Focus reuses the same animated backdrop outside .bh-layer.
+   Pause it off-air too, and keep both Studio monitor previews static. */
+.cf-layer[data-state="hidden"] .bh-bg *,
+.cf-layer[data-state="hidden"] .bh-wave::before,
+.cf-layer[data-state="hidden"] .bh-wave::after,
+.cf-layer[data-state="hidden"] .bh-ticker-track { animation-play-state:paused!important; }
+.stage-monitor .cf-layer .bh-bg *,
+.stage-monitor .cf-layer .bh-wave::before,
+.stage-monitor .cf-layer .bh-wave::after,
+.stage-monitor .cf-layer .bh-ticker-track { animation:none!important; }

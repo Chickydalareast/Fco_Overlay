@@ -1,0 +1,66 @@
+/* Scoreboard (v0.4B). Geometry (positions, slants, sizes) is generated in
+   client/scoreboard.ts from the FVPL measurements; this file holds the look
+   and the hidden poses the IN animation starts from.
+   Fixed colours: left red, right white. */
+.sb-layer { z-index:10; }
+.sb-layer[data-state="hidden"] { visibility:hidden; }
+.sb-anchor { position:absolute; transform-origin:0 0; filter:drop-shadow(0 3px 6px rgba(0,0,0,.4)); }
+.sb-anchor > * { position:absolute; }
+
+/* Underlay: wider strip under the body; only its two pointed bottom tips and a
+   thin line under the body show (left red -> black -> right white). */
+.sb-under { position:absolute; inset:0; clip-path:inset(0px 50% 0px 50%);
+  background:linear-gradient(90deg,#9e080c 0%,#5c0407 5%,#1c0203 22%,#050505 50%,#141416 80%,#3c3c40 94%,#6e6e74 100%); }
+
+/* Body: black trapezoid with the notch, opens from the centre outwards */
+.sb-body { position:absolute; inset:0; overflow:hidden; clip-path:inset(0px 50% 0px 50%);
+  background:linear-gradient(180deg,#141416 0%,#050506 45%,#000000 100%); }
+.sb-streak { position:absolute; }
+.sb-streak-a { background:linear-gradient(180deg,rgba(234,13,18,0) 15%,rgba(234,13,18,.22) 60%,rgba(234,13,18,.5) 100%); }
+.sb-streak-b { background:linear-gradient(180deg,rgba(255,255,255,0) 15%,rgba(255,255,255,.14) 60%,rgba(255,255,255,.34) 100%); }
+.sb-gloss { position:absolute; top:0; bottom:0; background:linear-gradient(105deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.16) 50%,rgba(255,255,255,0) 100%); }
+
+/* Centre plate: same black -> red as the Intro plate */
+.sb-plate { opacity:0; transform:scaleY(0); transform-origin:50% 0; overflow:hidden; z-index:2;
+  background:linear-gradient(100deg,#060000 8%,#3d0407 40%,#b30a10 74%,#e30c12 96%);
+  display:flex; align-items:center; justify-content:center; }
+.sb-match { transform:translateY(28px); color:#fff; font-family:'Barlow Condensed',Inter,Arial,sans-serif; font-weight:700; letter-spacing:.3px; line-height:1; white-space:nowrap; text-transform:uppercase; }
+
+/* Score cells (manual BO wins) */
+.sb-score { overflow:hidden; z-index:2; }
+.sb-score-fill, .sb-flash { position:absolute; inset:0; }
+.sb-score-a .sb-score-fill { background:#ea0d12; transform:translateX(-110%); }
+.sb-score-b .sb-score-fill { background:#ffffff; transform:translateX(110%); }
+.sb-flash { background:#ffffff; opacity:0; }
+.sb-score-b .sb-flash { background:#ea0d12; }
+.sb-digit { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; transform:translateY(-46px);
+  font-family:'Barlow Condensed',Inter,Arial,sans-serif; font-weight:700; line-height:1; font-variant-numeric:tabular-nums; }
+.sb-digit-val { display:inline-block; }
+.sb-score-a .sb-digit { color:#ffffff; }
+.sb-score-b .sb-digit { color:#000000; }
+
+/* Team code: C1 */
+.sb-name { display:flex; align-items:center; justify-content:center; opacity:0; z-index:2; }
+.sb-name-a { transform:translateX(24px); }
+.sb-name-b { transform:translateX(-24px); }
+.sb-name-text { display:inline-block; color:#fff; white-space:nowrap; line-height:1; font-family:'Barlow Condensed',Inter,Arial,sans-serif; font-weight:700; letter-spacing:.2px; text-transform:uppercase; transform-origin:50% 50%; }
+
+/* Team logos: white version (/assets/teams/C1-white.png) */
+.sb-logo { display:flex; align-items:center; justify-content:center; opacity:0; transform:scale(.5); z-index:2; }
+.sb-logo-img { object-fit:contain; display:block; }
+.sb-logo-text { display:none; color:#fff; font:700 18px 'Barlow Condensed',Inter,Arial,sans-serif; letter-spacing:.5px; }
+.sb-logo[data-mode="text"] .sb-logo-img { display:none; }
+.sb-logo[data-mode="text"] .sb-logo-text { display:block; }
+
+/* Stage text: sits in the notch and over the bar's top edge */
+.sb-stage-wrap { overflow:hidden; z-index:3; }
+.sb-stage-text { position:absolute; left:0; right:0; text-align:center; transform:translateY(34px); color:#fff; white-space:nowrap;
+  font-family:'Barlow Condensed',Inter,Arial,sans-serif; font-weight:700; letter-spacing:.4px; text-transform:uppercase;
+  text-shadow:0 1px 0 #000,0 2px 5px rgba(0,0,0,.85); }
+.sb-stage-label { display:inline-block; transform-origin:50% 50%; }
+
+/* GAME tab: the only part outside the game's score box */
+.sb-tab { overflow:hidden; }
+.sb-tab-fill { position:absolute; inset:0; transform:translateX(-101%); display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(180deg,#141416 0%,#000000 100%); padding-right:6px; }
+.sb-game { color:#fff; font-family:'Barlow Condensed',Inter,'Segoe UI',Arial,sans-serif; font-weight:700; letter-spacing:1px; line-height:1; white-space:nowrap; text-transform:uppercase; }

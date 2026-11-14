@@ -1,0 +1,7 @@
+{
+  "id": "fc-online-2026",
+  "name": "FC Online — Bảng đấu 16 đội",
+  "description": "Giải đấu theo bảng A/B/C/D; cấu trúc ban đầu cung cấp từ operator.",
+  "defaultBestOf": 3,
+  "notes": "Điểm BO trên scoreboard vẫn chỉnh tay; fixtures là cặp đấu seed chưa phải kết quả chính thức."
+}

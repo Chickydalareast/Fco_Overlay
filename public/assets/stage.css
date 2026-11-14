@@ -1,0 +1,76 @@
+:root { font-family: Inter, 'Segoe UI', Arial, sans-serif; }
+* { box-sizing: border-box; }
+.stage-host { position: relative; width: 100%; height: 100%; overflow: hidden; }
+.stage-frame { position:relative; height:100%; width:100%; overflow:hidden; isolation:isolate; background: transparent; }
+.stage-world { position:absolute; top:50%; left:50%; width:2560px; height:1440px; transform-origin:center; background:transparent; overflow:hidden; }
+.stage-frame[data-instant="true"] *, .stage-frame[data-instant="true"] *::before, .stage-frame[data-instant="true"] *::after { animation:none!important; transition:none!important; }
+.graphics-root { position:absolute; inset:0; pointer-events:none; }
+.graphic-layer { position:absolute; inset:0; pointer-events:none; }
+/* v0.4A: design space is 2560x1440. Layers not yet redesigned keep their
+   1920x1080 coordinates inside this wrapper (scaled x4/3). */
+.legacy-1080 { position:absolute; left:0; top:0; width:1920px; height:1080px; transform:scale(1.333334); transform-origin:0 0; pointer-events:none; }
+
+/* Studio-only synthetic game field: NEVER shown in OBS. */
+.mock-game { position:absolute; inset:0; background: repeating-linear-gradient(90deg, #1f6046 0 160px,#256f4b 160px 320px); }
+.mock-game::after { content:''; position:absolute; inset:24px; border:2px solid #c5d5b9aa; opacity:.5; }
+.pitch-half { position:absolute; height:100%; width:2px; top:0; left:50%; background:#c9ddc6aa; }
+.pitch-circle { position:absolute; width:440px; height:440px; left:calc(50% - 220px); top:calc(50% - 220px); border:3px solid #c9ddc6aa; border-radius:50%; }
+.pitch-topline { position:absolute; width:650px; height:120px; left:calc(50% - 325px); top:0; border:3px solid #c9ddc688; }
+.game-faint-label { position:absolute; top:980px; left:68px; font-size:22px; color:#cee9ce70; font-weight:800; letter-spacing:3px; }
+.cam-guide { position:absolute; bottom:66px; right:64px; width:265px; height:155px; border:2px dashed #f6f2c5aa; background:#19271e88; display:flex; justify-content:center; align-items:center; font-size:18px; font-weight:800; letter-spacing:1px; text-align:center; color:#e5f1c5; }
+
+/* Scoreboard styles: /assets/scoreboard.css (v0.4B, 2K). */
+/* Team Intro styles: /assets/intro.css (v0.4A). */
+@media (prefers-reduced-motion:reduce) { .stage-monitor * { transition-duration:0s!important; } }
+
+/* Camera slots: one track per tile, native video element (no server-side video mixing). */
+/* v0.4C: player cameras on the 2K stage (positions in client/stage.ts CAMERA_TILES).
+   Left team red frame, right team orange frame, 16:9, no names on air. */
+.cameras-layer { position:absolute; inset:0; pointer-events:none; z-index:8; }
+.camera-tile { position:absolute; box-sizing:border-box; overflow:hidden; background:#0b0b0d; border:5px solid #ff4242;
+  opacity:0; clip-path:inset(50% 0 50% 0); -webkit-clip-path:inset(50% 0 50% 0);
+  --cam-delay:0ms;
+  /* hiding: the shutter closes, then the tile disappears */
+  transition:clip-path 420ms cubic-bezier(.65,0,.35,1) var(--cam-delay),-webkit-clip-path 420ms cubic-bezier(.65,0,.35,1) var(--cam-delay),opacity 0ms linear calc(420ms + var(--cam-delay)); }
+.camera-side-B { border-color:#fe9500; }
+.camera-tile[data-visible="true"] { opacity:1; clip-path:inset(0 0 0 0); -webkit-clip-path:inset(0 0 0 0);
+  /* showing: visible at once, the shutter opens from the centre line */
+  transition:clip-path 420ms cubic-bezier(.65,0,.35,1) var(--cam-delay),-webkit-clip-path 420ms cubic-bezier(.65,0,.35,1) var(--cam-delay),opacity 0ms linear var(--cam-delay); }
+.camera-slot-A1, .camera-slot-B1 { --cam-delay:70ms; }
+.camera-tile video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; background:#0b0b0d; }
+/* Shown while the camera is starting, paused (phone turned upright) or missing */
+.camera-placeholder { position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  background:radial-gradient(ellipse at 50% 45%,#1d1012 0%,#0b0b0d 70%); }
+.camera-placeholder img { width:46%; height:auto; opacity:.18; }
+.camera-slot-label { position:absolute; left:10px; top:8px; color:#ffffff88; font:700 18px Inter,Arial,sans-serif; letter-spacing:1px; }
+.camera-tile[data-ready="true"] .camera-placeholder { display:none; }
+
+/* v0.3D: Only Studio markup contains this gameplay reference. OBS output is alpha. */
+.stage-monitor .studio-reference{position:absolute;inset:0;background:#122119 url('/assets/reference/gameplay-1920x1080.jpg') center/100% 100% no-repeat;z-index:0;pointer-events:none}
+.stage-monitor[data-reference="false"] .studio-reference{background-image:none;background-color:#17232c}
+.reference-grid,.reference-safe-zones{position:absolute;inset:0;display:none;pointer-events:none}
+.reference-safe-zones{inset:auto;left:0;top:0;width:1920px;height:1080px;transform:scale(1.333334);transform-origin:0 0}
+.stage-monitor[data-grid="true"] .reference-grid{display:block;background-image:linear-gradient(to right,rgba(255,255,255,.18) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.18) 1px,transparent 1px);background-size:160px 160px}
+.stage-monitor[data-safe-zones="true"] .reference-safe-zones{display:block}
+.reference-sz-top{position:absolute;left:80px;top:2px;width:948px;height:72px;border:2px dashed #f8dc70;display:flex;align-items:end;padding:8px;color:#f8dc70;font:bold 18px Arial,sans-serif;background:#141b2266}
+.reference-sz-bottom{position:absolute;left:36px;right:36px;top:771px;height:260px;border:2px dashed #dbe8ff;display:flex;align-items:start;padding:8px;color:#dbe8ff;font:bold 18px Arial,sans-serif;background:#141b2266}
+
+/* v0.4E: player name tag on top of each camera frame (outside the video). */
+.camera-tag { position:absolute; display:flex; align-items:center; box-sizing:border-box; padding:0 26px 0 14px; overflow:hidden;
+  background:#ff4242; color:#fff; font-family:'Barlow Condensed',Inter,Arial,sans-serif; font-weight:700; letter-spacing:.8px; text-transform:uppercase; white-space:nowrap;
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 100%,0 100%); -webkit-clip-path:polygon(0 0,calc(100% - 12px) 0,100% 100%,0 100%);
+  opacity:0; transform:translateY(8px); transition:opacity 200ms linear,transform 260ms cubic-bezier(.2,.8,.2,1); }
+.camera-tag.camera-side-B { background:#fe9500; color:#111; padding:0 14px 0 26px;
+  clip-path:polygon(12px 0,100% 0,100% 100%,0 100%); -webkit-clip-path:polygon(12px 0,100% 0,100% 100%,0 100%); }
+.camera-tag[data-show="true"] { opacity:1; transform:translateY(0); transition-delay:180ms; }
+.camera-tag-name { display:block; overflow:hidden; text-overflow:ellipsis; line-height:1.12; }
+
+/* v0.4H Cam Focus: the BO History background (history.css) masked so it only
+   shows at the bottom of the screen; the game stays visible above. Sits just
+   below the camera tiles (z 8) and the scoreboard (z 10). */
+.cf-layer { z-index:7; overflow:hidden; }
+.cf-layer[data-state="hidden"] { visibility:hidden; }
+.cf-layer > * { position:absolute; }
+.cf-backdrop { inset:0; will-change:transform; }
+.cf-backdrop > .bh-bg { position:absolute; }
+.cf-layer[data-state="hidden"] .bh-bg, .cf-layer[data-state="hidden"] .bh-bg *, .cf-layer[data-state="hidden"] .bh-ticker-track { animation-play-state:paused !important; }

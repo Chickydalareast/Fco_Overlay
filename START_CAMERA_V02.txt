@@ -1,0 +1,13 @@
+FC ONLINE GRAPHICS STUDIO — CAMERA ROOM BETA v0.2
+
+1. Apply PATCH ZIP vào project E:\Project\Fco\fc-overlay-phase1 (backup tự động).
+2. Mở .env.example, copy thành .env và điền LIVEKIT_URL, LIVEKIT_API_KEY, LIVEKIT_API_SECRET.
+3. Chạy npm start, vào http://127.0.0.1:4173/studio
+4. Click Copy OBS URL để add Browser Source duy nhất.
+5. Click Copy Player Room để lấy link gửi tuyển thủ.
+6. Muốn player ở máy khác truy cập, phải deploy trên domain HTTPS; localhost không hoạt động ở máy người chơi.
+7. Trong Admin: Assign A1/A2/B1/B2, Show in Preview, TAKE; hoặc TOGGLE LIVE CAM trực tiếp.
+
+DOC: docs\CAMERA_ROOM_V02_VI.md
+
+NOTE: Chưa thể test cam thật với LiveKit/OBS khi không có credentials và máy của bạn.

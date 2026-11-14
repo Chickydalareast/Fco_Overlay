@@ -1,0 +1,22 @@
+# /etc/systemd/system/fc-studio.service
+[Unit]
+Description=FC Online Graphics Studio
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=fcstudio
+WorkingDirectory=/opt/fc-overlay
+ExecStart=/usr/bin/node server/index.mjs
+Restart=always
+RestartSec=2
+# .env in /opt/fc-overlay is read by the app itself.
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/opt/fc-overlay/.runtime
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
