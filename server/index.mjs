@@ -11,7 +11,7 @@ import { openTournamentDB } from './tournament-db.mjs';
 import {scheduleBackup,flushBackups} from './backup-scheduler.mjs';
 import { acceptRendererReady, acceptRendererMedia, rendererInfo } from './renderer-sync.mjs';
 
-const VERSION='0.5.5';
+const VERSION='0.5.6';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const PUBLIC = path.join(ROOT,'public');
 const PORT = Number(process.env.PORT || 4173);
@@ -501,7 +501,7 @@ for (const signal of ['SIGINT','SIGTERM']) process.once(signal,()=>{
 });
 server.listen(PORT,HOST,()=>{
   const url=`http://${HOST}:${PORT}`;
-  console.log('\n  FC ONLINE — GRAPHICS STUDIO v0.5F');
+  console.log('\n  FC ONLINE — GRAPHICS STUDIO v0.5G');
   console.log(`  Tournament DB: ${tournamentDb.path} (${tournamentDb.counts().teams} teams, ${tournamentDb.counts().players} players)`);
   console.log(`  Studio:  ${url}/studio`);
   console.log(`  Password: ${process.env.FC_ADMIN_PASSWORD?'(from FC_ADMIN_PASSWORD in .env)':'admin123'}`);

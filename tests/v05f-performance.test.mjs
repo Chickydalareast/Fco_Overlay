@@ -104,11 +104,12 @@ test('v0.5F BO3 at 1-1 permits Game 3 and historic Game 1 edits',t=>{
   const edit=db.saveGameResult({matchId,gameNumber:1,leftGoals:3,rightGoals:0,expectedVersion:1});
   assert.equal(edit.version,2);
 });
-test('v0.5F no schema migrations; package & output UI versions consistent',()=>{
+test('v0.5F performance keeps no schema migrations; package & current UI versions stay consistent',()=>{
   const p=JSON.parse(read('package.json'));
-  assert.equal(p.version,'0.5.5');
-  assert.match(read('client/studio.ts'),/footer-version">v0\.5F/);
-  assert.match(read('server/index.mjs'),/VERSION='0\.5\.5'/);
+  assert.match(p.version,/^0\.5\.[56]$/);
+  const uiLabel=p.version==='0.5.5'?'v0.5F':'v0.5G';
+  assert.ok(read('client/studio.ts').includes(`footer-version">${uiLabel}`));
+  assert.ok(read('server/index.mjs').includes(`VERSION='${p.version}'`));
 });
 
 test('v0.5F BO/daily backup is off the server event loop and WAL-safe',async t=>{

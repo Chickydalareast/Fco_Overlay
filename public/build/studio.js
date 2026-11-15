@@ -3,6 +3,7 @@ import { mountStage } from './stage.js';
 import { LiveConnection } from './realtime.js';
 import { CameraReceiver } from './camera-receiver.js';
 import { CAMERA_SLOTS } from './contracts.js';
+import { isQualifiedTeamId, qualifiedRegistryTeams, qualifiedTeamOptionLabel } from './qualified-teams.js';
 const app = document.getElementById('app');
 let preview = null;
 let programStage = null;
@@ -240,7 +241,7 @@ function studioMarkup() {
         </div>
       </aside>
     </div>
-    <footer class="footer-status"><div class="footer-left"><span class="footer-online-dot" id="footer-dot"></span><span id="footer-message">Connecting…</span></div><span id="renderer-list" class="renderer-list">No OBS renderer</span><span class="footer-version">v0.5F</span></footer>
+    <footer class="footer-status"><div class="footer-left"><span class="footer-online-dot" id="footer-dot"></span><span id="footer-message">Connecting…</span></div><span id="renderer-list" class="renderer-list">No OBS renderer</span><span class="footer-version">v0.5G</span></footer>
     <div id="toast-stack" class="toast-stack" aria-live="assertive"></div>
   </div>`;
 }
@@ -475,12 +476,21 @@ function refreshRegistrySelectors() {
         const label = app.querySelector(`[data-registry-label="${side}"]`);
         if (!teamSelect || !logo)
             continue;
-        teamSelect.replaceChildren(new Option(registry ? '— Custom team —' : 'Registry offline', ''));
-        for (const team of registry?.teams ?? []) {
-            teamSelect.add(new Option(`${team.id} · ${team.club.name} (Group ${team.group})`, team.id));
+        teamSelect.replaceChildren(new Option(registry ? '— Choose a qualified team —' : 'Registry offline', ''));
+        // Keep the full Registry for older BOs/history, but only offer the eight
+        // advancing teams for new selections. Never mutate Program when rendering.
+        for (const team of qualifiedRegistryTeams(registry?.teams ?? [])) {
+            teamSelect.add(new Option(qualifiedTeamOptionLabel(team), team.id));
         }
-        teamSelect.value = findRegistryTeam(current.teamId) ? current.teamId : '';
         const team = findRegistryTeam(current.teamId);
+        if (team && !isQualifiedTeamId(team.id)) {
+            // An old BO might still be LIVE or staged; show its identity without
+            // allowing the eliminated team to be selected again from the dropdown.
+            const oldOption = new Option(`${team.id} · ${team.club.name} — Previous BO (not qualified)`, team.id);
+            oldOption.disabled = true;
+            teamSelect.add(oldOption);
+        }
+        teamSelect.value = team?.id ?? '';
         // v0.4A: the Intro shows both players of the team; no per-player selector.
         if (playerSelect) {
             playerSelect.replaceChildren(new Option('—', ''));
@@ -496,6 +506,13 @@ function refreshRegistrySelectors() {
     }
 }
 function applyRegistryTeam(side, id) {
+    if (!id)
+        return;
+    if (!isQualifiedTeamId(id)) {
+        setStatus('Only the eight qualified teams may be selected in this round.', true);
+        refreshRegistrySelectors();
+        return;
+    }
     const found = findRegistryTeam(id);
     if (!found)
         return;
@@ -571,7 +588,7 @@ async function loadTournamentRegistry() {
             throw new Error('Unexpected tournament registry schema');
         registry = payload;
         refreshRegistrySelectors();
-        text('#registry-status', '');
+        text('#registry-status', 'Quarterfinals: 8 qualified teams available. Previous BOs remain in history.');
         void loadMatchList();
     }
     catch (err) {
